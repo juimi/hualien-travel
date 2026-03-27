@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>花蓮旅遊指南</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Microsoft JhengHei", Arial, sans-serif;
+        background: linear-gradient(to bottom, #edf7ff 0%, #f8fbff 40%, #fefefe 100%);
+        color: #2c3e50;
+        line-height: 1.8;
+    }
+
+    header {
+        background:
+            linear-gradient(rgba(17, 50, 77, 0.45), rgba(17, 50, 77, 0.45)),
+            url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 110px 20px 85px;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 52px;
+        letter-spacing: 4px;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    header p {
+        margin-top: 18px;
+        font-size: 18px;
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.95;
+    }
+
+    .hero-btns {
+        margin-top: 30px;
+    }
+
+    .hero-btns a {
+        display: inline-block;
+        margin: 8px;
+        padding: 12px 22px;
+        border-radius: 999px;
+        text-decoration: none;
+        color: white;
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.28);
+        backdrop-filter: blur(6px);
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    .hero-btns a:hover {
+        background: rgba(255,255,255,0.32);
+        transform: translateY(-2px);
+    }
+
+    main {
+        max-width: 1080px;
+        margin: auto;
+        padding: 42px 18px 90px;
+    }
+
+    .intro {
+        background: rgba(255,255,255,0.92);
+        padding: 34px 30px;
+        border-radius: 28px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        margin-bottom: 40px;
+    }
+
+    .intro h2 {
+        margin-top: 0;
+        font-size: 32px;
+        color: #1f4f73;
+    }
+
+    .intro p {
+        font-size: 17px;
+        margin-bottom: 0;
+    }
+
+    .section-title {
+        text-align: center;
+        margin: 55px 0 28px;
+    }
+
+    .section-title h2 {
+        font-size: 34px;
+        color: #1f4f73;
+        margin-bottom: 8px;
+    }
+
+    .section-title p {
+        color: #6a7b89;
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .spot {
+        background: white;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        margin-bottom: 38px;
+        transition: 0.3s;
+    }
+
+    .spot:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 38px rgba(0,0,0,0.10);
+    }
+
+    .spot img {
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .spot-content {
+        padding: 28px;
+    }
+
+    .spot h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 30px;
+        color: #1f4f73;
+    }
+
+    .spot p {
+        margin-bottom: 0;
+        font-size: 16px;
+    }
+
+    .btn-box {
+        margin-top: 22px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 11px 18px;
+        background: #2f80c0;
+        color: white;
+        text-decoration: none;
+        border-radius: 14px;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    .btn:hover {
+        background: #1d628f;
+        transform: translateY(-2px);
+    }
+
+    .quote-box {
+        background: linear-gradient(135deg, #e8f5ff, #f7fbff);
+        border-left: 6px solid #6aaed6;
+        padding: 28px;
+        border-radius: 24px;
+        margin-top: 50px;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+    }
+
+    .quote-box p {
+        margin: 0;
+        font-size: 18px;
+        color: #3b5d76;
+        text-align: center;
+    }
+
+    #topBtn {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        background: #2f80c0;
+        color: white;
+        text-decoration: none;
+        padding: 13px 17px;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+        display: none;
+        font-weight: bold;
+        z-index: 999;
+    }
+
+    footer {
+        text-align: center;
+        color: #6b7b88;
+        font-size: 14px;
+        padding: 30px 20px 50px;
+    }
+
+    @media (max-width: 768px) {
+        header {
+            padding: 90px 18px 70px;
+        }
+
+        header h1 {
+            font-size: 36px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        .intro h2,
+        .section-title h2 {
+            font-size: 26px;
+        }
+
+        .spot h3 {
+            font-size: 24px;
+        }
+
+        .spot img {
+            height: 240px;
+        }
+
+        .intro,
+        .spot-content,
+        .quote-box {
+            padding: 22px;
+        }
+    }
+</style>
+</head>
+<body id="top">
+
+<header>
+    <h1>花蓮旅遊指南</h1>
+    <p>沿著山海之間，走進花蓮最迷人的自然風景、人文記憶與在地滋味。</p>
+
+    <div class="hero-btns">
+        <a href="#about">認識花蓮</a>
+        <a href="#spots">熱門景點</a>
+        <a href="#food">在地美食</a>
+    </div>
+</header>
+
+<main>
+
+    <section id="about" class="intro">
+        <h2>關於花蓮</h2>
+        <p>
+            花蓮位於臺灣東部，擁有壯闊的太平洋海景、綿延的山脈與純粹悠緩的生活節奏。
+            在這裡，你可以看見海天一線的遼闊，也能走進歷史與文化交織而成的靜謐角落。
+            無論是想親近自然、欣賞風景，還是品嚐在地特色小吃，花蓮都是一個值得慢慢感受的地方。
+        </p>
+    </section>
+
+    <div id="spots" class="section-title">
+        <h2>熱門景點</h2>
+        <p>從山海景色到歷史人文，感受花蓮不同層次的魅力。</p>
+    </div>
+
+    <section class="spot">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80" alt="七星潭">
+        <div class="spot-content">
+            <h3>七星潭</h3>
+            <p>
+                七星潭是花蓮相當具代表性的海岸景點，湛藍的海水與遼闊的天空相互映照，
+                形成令人難忘的海景。沿著海岸散步、吹著海風、聽著浪聲，
+                能讓人暫時遠離城市的喧囂，感受東海岸特有的寧靜與開闊。
+            </p>
+            <div class="btn-box">
+                <a class="btn" href="#top">回到上方</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="spot">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80" alt="太魯閣">
+        <div class="spot-content">
+            <h3>太魯閣國家公園</h3>
+            <p>
+                太魯閣以壯麗的峽谷地形聞名，高聳的大理石山壁與蜿蜒步道展現出大自然的震撼力量。
+                走進這裡，不只是欣賞風景，更像是在山谷與溪流之間，親身感受時間與地貌雕刻出的壯闊景觀。
+            </p>
+            <div class="btn-box">
+                <a class="btn" href="#top">回到上方</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="spot">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80" alt="松園別館">
+        <div class="spot-content">
+            <h3>松園別館</h3>
+            <p>
+                松園別館是一處結合歷史氛圍與藝術氣息的空間，老建築靜靜佇立在綠意之中，
+                帶著一種沉穩而優雅的氣質。漫步其中，不只能欣賞建築與展覽，
+                也能在樹影與微風之間，感受到花蓮柔和而安靜的一面。
+            </p>
+            <div class="btn-box">
+                <a class="btn" href="#top">回到上方</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="spot">
+        <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=80" alt="慶修院">
+        <div class="spot-content">
+            <h3>慶修院</h3>
+            <p>
+                慶修院保留了濃厚的日式寺院風格，環境清幽而莊重，是花蓮極具特色的人文景點之一。
+                在這裡，可以感受到歷史留下的痕跡，也能在寧靜的空間中，體會不同文化交會的獨特氛圍。
+            </p>
+            <div class="btn-box">
+                <a class="btn" href="#top">回到上方</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="food" class="section-title">
+        <h2>在地美食</h2>
+        <p>旅行除了風景，也少不了記憶中的那一口滋味。</p>
+    </div>
+
+    <section class="spot">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=80" alt="花蓮麻糬">
+        <div class="spot-content">
+            <h3>花蓮麻糬</h3>
+            <p>
+                提到花蓮的伴手禮，很多人第一個想到的就是麻糬。外皮柔軟Q彈，
+                內餡香甜細緻，口感樸實卻令人印象深刻。它不只是花蓮的經典點心，
+                也承載著旅人對這座城市最溫柔的味覺記憶。
+            </p>
+            <div class="btn-box">
+                <a class="btn" href="#top">回到上方</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="quote-box">
+        <p>「花蓮的美，不只是風景，而是在山海之間，讓人願意慢下來的那份溫柔。」</p>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 花蓮旅遊指南｜山海之間，遇見最動人的花蓮
+</footer>
+
+<a href="#top" id="topBtn">↑ TOP</a>
+
+<script>
+    const topBtn = document.getElementById("topBtn");
+
+    window.onscroll = function () {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            topBtn.style.display = "block";
+        } else {
+            topBtn.style.display = "none";
+        }
+    };
+</script>
+
+</body>
+</html>
